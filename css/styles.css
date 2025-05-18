@@ -13,3 +13,49 @@ body.landing-body {
   box-shadow: 0 0 20px #00ff99;
   color: white;
 }
+/* Fondo*/
+body {
+  background: radial-gradient(circle at center, #1b1b1b 0%, #000000 100%);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Estilo de títulos */
+h1 {
+  font-family: 'Bungee', cursive;
+  color: #00ff9c;
+  text-shadow: 0 0 5px #00ff9c;
+}
+
+/* Estilo de los filtros */
+.form-select {
+  background-color: #111;
+  color: #00ff9c;
+  border: 1px solid #00ff9c;
+}
+.form-select:focus {
+  border-color: #00ff9c;
+  box-shadow: 0 0 5px #00ff9c;
+}
+
+/* Cartas de personaje */
+.card {
+  background-color: #222;
+  border: 1px solid #00ff9c;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #00ff9c77;
+}
+.card-title {
+  color: #00ff9c;
+  font-weight: bold;
+}
+
+/* Cargando texto */
+#characters-container .text-center {
+  font-size: 1.2rem;
+  color: #00ff9c;
+}
+
