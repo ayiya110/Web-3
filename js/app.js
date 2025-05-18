@@ -1,22 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_URL = "https://rickandmortyapi.com/api/character";
-  const container = document.getElementById("characters-container");
+  const CHAR_API_URL = "https://rickandmortyapi.com/api/character";
+  const LOC_API_URL = "https://rickandmortyapi.com/api/location";
 
-  // Filtros
+  const charactersContainer = document.getElementById("characters-container");
+  const locationsContainer = document.getElementById("locations-container");
+
+  // Filtros personajes
   const genderSelect = document.getElementById("filter-gender");
   const speciesSelect = document.getElementById("filter-species");
   const statusSelect = document.getElementById("filter-status");
 
-  // Evento para aplicar filtros
+  // Escuchar cambio de filtros (solo para personajes)
   genderSelect.addEventListener("change", fetchAndRenderCharacters);
   speciesSelect.addEventListener("change", fetchAndRenderCharacters);
   statusSelect.addEventListener("change", fetchAndRenderCharacters);
 
-  // Función principal
-  async function fetchAndRenderCharacters() {
-    container.innerHTML = `<div class="text-center text-white">Cargando personajes...</div>`;
+  // Detectar pestañas
+  const tabMenu = document.getElementById("tabMenu");
+  tabMenu.addEventListener("click", (event) => {
+    if(event.target.id === "characters-tab") {
+      fetchAndRenderCharacters();
+    }
+    if(event.target.id === "locations-tab") {
+      fetchAndRenderLocations();
+    }
+  });
 
-    let url = API_URL + "?";
+  // Función para cargar y mostrar personajes con filtros
+  async function fetchAndRenderCharacters() {
+    charactersContainer.innerHTML = `<div class="text-center text-white">Cargando personajes...</div>`;
+    locationsContainer.innerHTML = ""; // limpiar planetas
+
+    let url = CHAR_API_URL + "?";
 
     if (genderSelect.value) url += `gender=${genderSelect.value}&`;
     if (speciesSelect.value) url += `species=${speciesSelect.value}&`;
@@ -29,17 +44,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (data.results && data.results.length > 0) {
         renderCharacters(data.results);
       } else {
-        container.innerHTML = `<p class="text-center text-white">No se encontraron personajes con esos filtros.</p>`;
+        charactersContainer.innerHTML = `<p class="text-center text-white">No se encontraron personajes con esos filtros.</p>`;
       }
     } catch (err) {
       console.error(err);
-      container.innerHTML = `<p class="text-center text-danger">Error al cargar personajes.</p>`;
+      charactersContainer.innerHTML = `<p class="text-center text-danger">Error al cargar personajes.</p>`;
     }
   }
 
-  // Render de tarjetas
+  // Render de tarjetas personajes
   function renderCharacters(characters) {
-    container.innerHTML = "";
+    charactersContainer.innerHTML = "";
 
     characters.forEach(character => {
       const card = document.createElement("div");
@@ -59,11 +74,55 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-      container.appendChild(card);
+      charactersContainer.appendChild(card);
     });
   }
 
-  // Carga inicial
+  // Función para cargar y mostrar planetas
+  async function fetchAndRenderLocations() {
+    locationsContainer.innerHTML = `<div class="text-center text-white">Cargando planetas...</div>`;
+    charactersContainer.innerHTML = ""; // limpiar personajes
+
+    try {
+      const response = await fetch(LOC_API_URL);
+      const data = await response.json();
+
+      if (data.results && data.results.length > 0) {
+        renderLocations(data.results);
+      } else {
+        locationsContainer.innerHTML = `<p class="text-center text-white">No se encontraron planetas.</p>`;
+      }
+    } catch (err) {
+      console.error(err);
+      locationsContainer.innerHTML = `<p class="text-center text-danger">Error al cargar planetas.</p>`;
+    }
+  }
+
+  // Render de tarjetas planetas
+  function renderLocations(locations) {
+    locationsContainer.innerHTML = "";
+
+    locations.forEach(location => {
+      const card = document.createElement("div");
+      card.className = "col-md-4";
+
+      card.innerHTML = `
+        <div class="card h-100 bg-secondary text-white border-0 shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title">${location.name}</h5>
+            <p class="card-text">
+              <strong>Tipo:</strong> ${location.type}<br>
+              <strong>Dimensión:</strong> ${location.dimension}<br>
+              <strong>Residentes:</strong> ${location.residents.length}
+            </p>
+          </div>
+        </div>
+      `;
+
+      locationsContainer.appendChild(card);
+    });
+  }
+
+  // Carga inicial de personajes
   fetchAndRenderCharacters();
-  
 });
