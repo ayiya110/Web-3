@@ -5,31 +5,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const charactersContainer = document.getElementById("characters-container");
   const locationsContainer = document.getElementById("locations-container");
 
-  // Filtros personajes
   const genderSelect = document.getElementById("filter-gender");
   const speciesSelect = document.getElementById("filter-species");
   const statusSelect = document.getElementById("filter-status");
 
-  // Escuchar cambio de filtros (solo para personajes)
   genderSelect.addEventListener("change", fetchAndRenderCharacters);
   speciesSelect.addEventListener("change", fetchAndRenderCharacters);
   statusSelect.addEventListener("change", fetchAndRenderCharacters);
 
-  // Detectar pestañas
   const tabMenu = document.getElementById("tabMenu");
   tabMenu.addEventListener("click", (event) => {
-    if(event.target.id === "characters-tab") {
+    if (event.target.id === "characters-tab") {
       fetchAndRenderCharacters();
     }
-    if(event.target.id === "locations-tab") {
+    if (event.target.id === "locations-tab") {
       fetchAndRenderLocations();
     }
   });
 
-  // Función para cargar y mostrar personajes con filtros
   async function fetchAndRenderCharacters() {
     charactersContainer.innerHTML = `<div class="text-center text-white">Cargando personajes...</div>`;
-    locationsContainer.innerHTML = ""; // limpiar planetas
+    locationsContainer.innerHTML = "";
 
     let url = CHAR_API_URL + "?";
 
@@ -52,16 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Render de tarjetas personajes
   function renderCharacters(characters) {
     charactersContainer.innerHTML = "";
 
     characters.forEach(character => {
-      const card = document.createElement("div");
-      card.className = "col-md-3";
+      const col = document.createElement("div");
+      col.className = "col-md-3";
 
-      card.innerHTML = `
-        <div class="card h-100 bg-secondary text-white border-0 shadow-lg">
+      // Creamos la tarjeta con clase custom-card para estilos propios
+      col.innerHTML = `
+        <div class="card custom-card h-100">
           <img src="${character.image}" class="card-img-top" alt="${character.name}">
           <div class="card-body">
             <h5 class="card-title">${character.name}</h5>
@@ -74,14 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-      charactersContainer.appendChild(card);
+      charactersContainer.appendChild(col);
     });
   }
 
-  // Función para cargar y mostrar planetas
   async function fetchAndRenderLocations() {
     locationsContainer.innerHTML = `<div class="text-center text-white">Cargando planetas...</div>`;
-    charactersContainer.innerHTML = ""; // limpiar personajes
+    charactersContainer.innerHTML = "";
 
     try {
       const response = await fetch(LOC_API_URL);
@@ -98,16 +93,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Render de tarjetas planetas
   function renderLocations(locations) {
     locationsContainer.innerHTML = "";
 
     locations.forEach(location => {
-      const card = document.createElement("div");
-      card.className = "col-md-4";
+      const col = document.createElement("div");
+      col.className = "col-md-4";
 
-      card.innerHTML = `
-        <div class="card h-100 bg-secondary text-white border-0 shadow-lg">
+      col.innerHTML = `
+        <div class="card custom-card h-100">
           <div class="card-body">
             <h5 class="card-title">${location.name}</h5>
             <p class="card-text">
@@ -119,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-      locationsContainer.appendChild(card);
+      locationsContainer.appendChild(col);
     });
   }
 

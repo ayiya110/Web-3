@@ -1,10 +1,12 @@
-/* Fondo general para todas las páginas, incluyendo la landing */
-body,
+/* Fondo general*/
 body.landing-body {
-  background: radial-gradient(circle at center, #1b1b1b 0%, #000000 100%);
+  
+  background: radial-gradient(circle at center, rgba(27, 27, 27, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), 
+              url(/Media/landingFondo.webp) no-repeat center center fixed;
+  background-size: cover;
   color: white;
-  margin: 0;
   min-height: 100vh;
+  
 }
 
 /* Contenedor de landing */
@@ -17,40 +19,53 @@ body.landing-body {
 }
 
 /* Estilo de títulos */
-h1,h2 {
+h1, h2 {
   font-family: 'Bungee', cursive;
   color: #00ff9c;
-  text-shadow: 0 0 5px #00ff9c;
+  text-shadow: 0 0 8px #00ff9c;
 }
 
-/* Estilo para selects (filtros desplegables) */
+/* Estilo desplegables*/
 .form-select,
 .form-control {
   background-color: #111;
   color: #00ff9c;
-  border: 1px solid #00ff9c;
+  border: 1.5px solid #00ff9c;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-select:focus,
 .form-control:focus {
   border-color: #00ff9c;
-  box-shadow: 0 0 5px #00ff9c;
+  box-shadow: 0 0 8px #00ff9c;
+  outline: none;
 }
 
 /* Cartas */
-.card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.custom-card {
+  background-color: #0d1a26; 
+  border: 1.5px solid #00ff9c;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  color: #f5d9d1; 
+  box-shadow: none;
 }
 
-.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 20px #00ff9c77;
+.custom-card:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 8px #00ff9caa,
+    0 0 15px #00ff9cbb,
+    0 0 25px #00ff9cdd,
+    0 0 40px #00ff9cff;
 }
 
-.card-title {
+/* Títulos dentro de cartas */
+.custom-card .card-title {
   color: #00ff9c;
-  font-weight: bold;
+  font-weight: 700;
   font-family: 'Bungee', cursive;
+  text-shadow: 0 0 6px #00ff9c99;
 }
 
 /* Botón de la landing */
@@ -58,21 +73,48 @@ h1,h2 {
   background-color: #00ff9c;
   font-family: 'Segoe UI', sans-serif;
   border: none;
-  color: blck;
+  color: black;
   font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn.btn-success.btn-lg:hover,
+.btn.btn-success.btn-lg:focus {
+  background-color: #00cc7a;
+  color: #fff;
+  outline: none;
+  box-shadow: 0 0 8px #00ff9c;
 }
 
 /* Navegación con pestañas */
+.nav-tabs {
+  border-bottom: 2px solid #00ff9c;
+}
+
 .nav-tabs .nav-link.active {
   background-color: #111;
-  border-color: #00ff9c;
+  border: 1.5px solid #00ff9c;
+  border-bottom-color: transparent;
   color: #00ff9c;
+  font-weight: 600;
 }
 
 .nav-tabs .nav-link {
   color: #ccc;
+  transition: color 0.3s ease;
 }
 
 .nav-tabs .nav-link:hover {
   color: #00ff9c;
+  text-shadow: 0 0 6px #00ff9c;
 }
+.app-body {
+  position: relative;
+  background: radial-gradient(circle at center, rgba(27, 27, 27, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), 
+              url(/Media/fondoApp.webp) no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
