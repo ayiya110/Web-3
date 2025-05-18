@@ -1,0 +1,15 @@
+/* Estilo para landing page */
+body.landing-body {
+  background: radial-gradient(circle at center, #44ff99 0%, #003300 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.landing-container {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #00ff99;
+  color: white;
+}
