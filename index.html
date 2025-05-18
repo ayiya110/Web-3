@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -8,10 +9,33 @@
 </head>
 <body class="landing-body d-flex justify-content-center align-items-center text-center">
 
-  <div class="landing-container">
-    <h1 class="mb-4">Bienvenido al Multiverso de Rick & Morty</h1>
-    <a href="app.html" class="btn btn-success btn-lg">Entrar al Multiverso</a>
+  <!-- Pantalla de carga oculta inicialmente -->
+  <div id="loading" class="loading-screen d-flex">
+    <h2>Abriendo portal al multiverso...</h2>
+    <div class="spinner-border text-success mt-4" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
   </div>
 
+  <!-- Contenido normal de la landing -->
+  <div id="landing-content" class="landing-container">
+    <h1 class="mb-4">Bienvenido al Multiverso de Rick & Morty</h1>
+    <button id="enter-btn" class="btn btn-success btn-lg">Entrar al Multiverso</button>
+  </div>
+
+  <script>
+    const enterBtn = document.getElementById("enter-btn");
+    const loadingScreen = document.getElementById("loading");
+    const landingContent = document.getElementById("landing-content");
+
+    enterBtn.addEventListener("click", () => {
+      landingContent.style.display = "none";
+      loadingScreen.style.display = "flex";
+
+      setTimeout(() => {
+        window.location.href = "app.html";
+      }, 2000);
+    });
+  </script>
 </body>
 </html>

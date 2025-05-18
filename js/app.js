@@ -65,4 +65,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Carga inicial
   fetchAndRenderCharacters();
+  
 });
