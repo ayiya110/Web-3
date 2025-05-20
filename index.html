@@ -19,15 +19,20 @@
     <div class="row">
       
       <!-- BARRA LATERAL -->
-      <aside class="col-md-3 mb-4">
-        <div class="p-3 bg-dark border border-success rounded">
-          <h5 class="text-success">Navegación</h5>
+      <aside class="col-md-3 mb-4 d-flex flex-column align-items-center">
+        <div class="w-100 p-3 bg-dark border border-success rounded">
+          <h2>Navegación</h2>
           <ul class="list-unstyled">
             <li><a href="app.html#characters-tab-pane" class="text-decoration-none text-light">👨‍🚀 Personajes</a></li>
             <li><a href="app.html#locations-tab-pane" class="text-decoration-none text-light">🌌 Planetas</a></li>
             <li><a href="#" class="text-decoration-none text-light">📺 Episodios (próximamente)</a></li>
             <li><a href="#" class="text-decoration-none text-light">🧪 Tecnología (próximamente)</a></li>
           </ul>
+        </div>
+
+        <!-- BANNER VERTICAL -->
+        <div class="banner-vertical mt-4 w-100 align-items-center justify-content-center rounded border border-success overflow-hidden">
+          <img src="Media/Banner.webp" alt="Banner Rick & Morty" class="w-100 h-100 object-fit-cover"/>
         </div>
       </aside>
 
@@ -40,8 +45,9 @@
           </p>
           <hr class="border-success"/>
 
-          <div class="row align-items-center mt-4">
-            <div class="col-md-8">
+          <!-- Contenido y botón-->
+          <div class="row mt-4 align-items-stretch">
+            <div class="col-md-6 d-flex flex-column justify-content-center">
               <h3>¿Qué puedes encontrar?</h3>
               <ul>
                 <li><strong>Fichas de Personajes</strong> con género, especie, estado y más.</li>
@@ -49,26 +55,17 @@
                 <li><strong>Datos curiosos</strong> y citas icónicas del multiverso.</li>
               </ul>
             </div>
-            <div class="col-md-4 text-md-end text-center mt-3 mt-md-0">
+            <div class="col-md-4 d-flex align-items-center justify-content-center h-100">
               <a href="app.html" class="btn btn-success btn-lg">Explorar el Multiverso</a>
             </div>
           </div>
-          
+
         </article>
 
-        <!-- NUEVA SECCIÓN - VIDEO YOUTUBE -->
+        <!--VIDEO YOUTUBE -->
         <section class="mt-5 p-4 bg-dark border border-success rounded shadow text-center">
           <h3 class="mb-3">Trailer oficial de Rick & Morty</h3>
-          <div class="ratio ratio-16x9">
-            <iframe
-              src="https://www.youtube.com/embed/ySYnTO7leqI"
-              title="Trailer oficial Rick & Morty"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              style="border: 1.5px solid #00ff9c; border-radius: 8px;">
-            </iframe>
-          </div>
-          <p class="mt-2 text-success">Disfruta el trailer oficial directamente en la página</p>
+          <iframe width="100%" height="433" src="https://www.youtube.com/embed/ySYnTO7leqI" title="Trailer Rick & Morty" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </section>
 
       </main>

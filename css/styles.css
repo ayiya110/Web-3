@@ -26,6 +26,19 @@ ul li::marker {
   color: #00ff9c;
 }
 
+/* Banner lateral */
+aside .bg-success.bg-opacity-10 {
+  background-color: rgba(0, 255, 156, 0.1) !important;
+  border-color: #00ff9c !important;
+}
+
+aside .bg-success.bg-opacity-10 h6,
+aside .bg-success.bg-opacity-10 p,
+aside .bg-success.bg-opacity-10 a {
+  color: #00ff9c !important;
+}
+
+
 /* Mejor separación en textos */
 p {
   line-height: 1.6;
@@ -37,15 +50,6 @@ h1, h2,h3 {
   color: #00ff9c;
   text-shadow: 0 0 8px #00ff9c;
 }
-
-h5 {
-  color: #00ff9c;
-  font-family: 'Bungee', cursive;
-  
-}
-
-
-
 
 /* Estilo desplegables*/
 .form-select,
@@ -93,10 +97,11 @@ h5 {
 /* Botón de la landing */
 .btn.btn-success.btn-lg {
   background-color: #00ff9c;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Bungee', cursive;
   border: none;
   color: black;
   font-weight: bold;
+  font-size: 2rem;
   transition: background-color 0.3s ease;
 }
 
@@ -139,9 +144,3 @@ h5 {
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-
-
-
-
-
